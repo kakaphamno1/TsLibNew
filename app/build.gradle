@@ -9,7 +9,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
-group = 'com.github.TsLibNew'
+group = 'com.github.kakaphamno1'
 version = '1.0'
 android {
     compileSdkVersion 29
