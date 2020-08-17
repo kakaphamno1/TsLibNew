@@ -84,7 +84,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        LocaleUtils.updateConfig(this);
+       // LocaleUtils.updateConfig(this);
         try {
             viewModel = getVMClass().getDeclaredConstructor(Application.class).newInstance(getBaseActivity().getApplication());//ViewModelProviders.of(getActivity()).get(clazz);
         } catch (IllegalAccessException e) {
