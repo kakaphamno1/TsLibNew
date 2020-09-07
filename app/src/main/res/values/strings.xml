@@ -4,10 +4,10 @@
     <string name="wait">wait</string>
     <string name="OK" translatable="false">OK</string>
     <string name="sendError">sendError</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="notFound">not found</string>
     <string name="token_timeout">Phiên giao dịch hết hạn</string>
-    <string name="no_internet_title">Khoo</string>
+    <string name="no_internet_title">Cannot connect</string>
     <string name="no_internet_body">Please check your network connection</string>
     <string name="wifi_on">Wifi</string>
     <string name="mobile">Mobile data</string>

@@ -33,6 +33,7 @@ import com.tsolution.base.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -73,7 +74,6 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
     private AppCompatImageView close;
     private AppCompatImageView plane;
     private AppCompatImageView tomb;
-    private AppCompatTextView noInternet;
     private AppCompatTextView noInternetBody;
     private AppCompatButton wifiOn;
     private AppCompatButton mobileOn;
@@ -81,15 +81,12 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
     private ProgressBar wifiLoading;
 
     private float dialogRadius;
-    private Typeface titleTypeface;
-    private Typeface messageTypeface;
     private int buttonColor;
     private int buttonTextColor;
     private int buttonIconsColor;
     private int wifiLoaderColor;
     private boolean cancelable;
 
-    private boolean isWifiOn;
     private WifiReceiver wifiReceiver;
     private NetworkStatusReceiver networkStatusReceiver;
     private ObjectAnimator wifiAnimator;
@@ -103,16 +100,12 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         if (dialogRadius == NO_RADIUS) {
             this.dialogRadius = 0f;
         }
-        this.titleTypeface = titleTypeface;
-        this.messageTypeface = messageTypeface;
 
         this.buttonTextColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
         this.buttonColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
         this.buttonIconsColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
         this.wifiLoaderColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
-
         this.cancelable = cancelable;
-
         initReceivers(context);
     }
 
@@ -138,7 +131,6 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         initButtonStyle();
         initListeners();
         initAnimations();
-        initTypefaces();
         initWifiLoading();
         initClose();
         initAnimationsNoInternet();
@@ -156,16 +148,13 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
     }
 
     private void initMainWindow() {
-        //getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT);
+        Objects.requireNonNull(getWindow()).setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
     }
 
     private void initView() {
         close = findViewById(R.id.close);
         plane = findViewById(R.id.plane);
         tomb = findViewById(R.id.tomb);
-        noInternet = findViewById(R.id.no_internet);
         noInternetBody = findViewById(R.id.no_internet_body);
         wifiOn = findViewById(R.id.wifi_on);
         mobileOn = findViewById(R.id.mobile_on);
@@ -191,10 +180,15 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         Drawable wifi = ContextCompat.getDrawable(getContext(), R.drawable.ic_wifi_white);
         Drawable mobileData = ContextCompat.getDrawable(getContext(), R.drawable.ic_4g_white);
         Drawable airplane = ContextCompat.getDrawable(getContext(), R.drawable.ic_airplane_off);
-
-        wifi.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
-        mobileData.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
-        airplane.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
+        if (wifi != null){
+            wifi.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
+        }
+        if (mobileData != null){
+            mobileData.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
+        }
+        if (airplane != null){
+            airplane.mutate().setColorFilter(buttonIconsColor, PorterDuff.Mode.SRC_ATOP);
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             wifiOn.setCompoundDrawablesRelativeWithIntrinsicBounds(wifi, null, null, null);
@@ -255,16 +249,6 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         });
 
         flightThere.start();
-    }
-
-    private void initTypefaces() {
-        if (titleTypeface != null) {
-            noInternet.setTypeface(titleTypeface);
-        }
-
-        if (messageTypeface != null) {
-            noInternetBody.setTypeface(messageTypeface);
-        }
     }
 
     private void initWifiLoading() {
@@ -338,20 +322,9 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 NoInternetUtils.turnOnWifi(getContext());
-                animateWifi();
             }
         });
     }
-
-    private void animateWifi() {
-    /*    wifiAnimator = ObjectAnimator.ofFloat(wifiIndicator, "alpha", 0f, 0.5f);
-        wifiAnimator.setDuration(1500);
-        wifiAnimator.setRepeatMode(ValueAnimator.RESTART);
-        wifiAnimator.setRepeatCount(ValueAnimator.INFINITE);
-
-        wifiAnimator.start();*/
-    }
-
     private int animateDirection() {
         Random r = new Random();
         return r.nextInt(2);
@@ -361,7 +334,6 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
     public void onWifiTurnedOn() {
         if (wifiAnimator != null && wifiAnimator.isStarted()) {
             wifiAnimator.cancel();
-            isWifiOn = true;
             getContext().unregisterReceiver(wifiReceiver);
         }
     }
@@ -433,10 +405,12 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         try {
             getContext().unregisterReceiver(networkStatusReceiver);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         try {
             getContext().unregisterReceiver(wifiReceiver);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

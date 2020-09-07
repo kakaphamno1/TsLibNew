@@ -13,6 +13,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Created by DUYTIEN on 09/05/2020.
@@ -43,15 +44,15 @@ public class NoInternetUtils {
     static boolean isConnectedToWifi(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-
-        return wifiInfo.isConnected();
+        assert wifiInfo != null;
+        return  wifiInfo.isConnected();
     }
 
     public static boolean isConnectedToMobileNetwork(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        return mobileInfo.isConnected();
+        return Objects.requireNonNull(mobileInfo).isConnected();
     }
 
     static void turnOn3g(Context context) {
@@ -75,13 +76,5 @@ public class NoInternetUtils {
 
     static void turnOffAirplaneMode(Context context) {
         context.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-    }
-
-    static String getCurrentDate() {
-        Calendar c = Calendar.getInstance();
-
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd", Locale.getDefault());
-
-        return df.format(c.getTime());
     }
 }

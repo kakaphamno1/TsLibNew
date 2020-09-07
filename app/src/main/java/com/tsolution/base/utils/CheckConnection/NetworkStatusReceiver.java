@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import java.util.Objects;
+
 /**
  * Created by DUYTIEN on 09/05/2020.
  */
@@ -25,7 +27,7 @@ public class NetworkStatusReceiver extends BroadcastReceiver {
                 }
             }
         }
-        if (intent.getExtras().getBoolean(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false)) {
+        if (Objects.requireNonNull(intent.getExtras()).getBoolean(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false)) {
             Log.d("app", "There's no network connectivity");
             if (connectionCallback != null) {
                 connectionCallback.hasActiveConnection(false);
