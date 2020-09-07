@@ -24,6 +24,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
+import com.tsolution.base.utils.CheckConnection.NoInternetDialog;
 import com.tsolution.base.utils.locale.LocaleUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +36,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     protected BaseViewModel viewModel;
     private static AlertDialog.Builder alertDialogV2;
     protected V binding;
+    private NoInternetDialog noInternetDialog;
 
     public BaseActivity() {
 
@@ -84,7 +86,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-       // LocaleUtils.updateConfig(this);
+        // LocaleUtils.updateConfig(this);
         try {
             viewModel = getVMClass().getDeclaredConstructor(Application.class).newInstance(getBaseActivity().getApplication());//ViewModelProviders.of(getActivity()).get(clazz);
         } catch (IllegalAccessException e) {
@@ -197,5 +199,12 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         if (binding != null) {
             binding.unbind();
         }
+        noInternetDialog.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        noInternetDialog = new NoInternetDialog.Builder(this).setCancelable(false).build();
     }
 }
