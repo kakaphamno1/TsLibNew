@@ -106,6 +106,7 @@ public class NoInternetDialog extends Dialog implements View.OnClickListener, Co
         this.titleTypeface = titleTypeface;
         this.messageTypeface = messageTypeface;
 
+        this.buttonTextColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
         this.buttonColor = ContextCompat.getColor(getContext(), R.color.colorAccent);
         this.buttonIconsColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
         this.wifiLoaderColor = ContextCompat.getColor(getContext(), R.color.colorWhite);
