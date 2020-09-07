@@ -199,7 +199,9 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         if (binding != null) {
             binding.unbind();
         }
-        noInternetDialog.onDestroy();
+        if (noInternetDialog != null) {
+            noInternetDialog.onDestroy();
+        }
     }
 
     @Override

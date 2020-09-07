@@ -165,7 +165,7 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:drawableStart="@drawable/ic_4g_white"
         android:drawableLeft="@drawable/ic_4g_white"
-        android:text="@string/mobile"
+        android:text="@string/mobile_data"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/button_text_size"
