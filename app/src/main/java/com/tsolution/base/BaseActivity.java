@@ -89,6 +89,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         // LocaleUtils.updateConfig(this);
         try {
             viewModel = getVMClass().getDeclaredConstructor(Application.class).newInstance(getBaseActivity().getApplication());//ViewModelProviders.of(getActivity()).get(clazz);
+            noInternetDialog = new NoInternetDialog.Builder(this).setCancelable(false).build();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -207,6 +208,5 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onResume() {
         super.onResume();
-        noInternetDialog = new NoInternetDialog.Builder(this).setCancelable(false).build();
     }
 }
