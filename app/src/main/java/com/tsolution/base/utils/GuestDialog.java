@@ -75,12 +75,14 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
                     .isProcessLogin(true)
                     .isProcessRegister(false)
                     .build());
+            dismiss();
         } else if (view.getId() == R.id.btnRegister) {
             // Process Register
             EventBus.getDefault().post(GuestActionDTO.builder()
                     .isProcessLogin(false)
                     .isProcessRegister(true)
                     .build());
+            dismiss();
         }
     }
 
