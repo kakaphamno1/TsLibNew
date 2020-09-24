@@ -1,4 +1,4 @@
-package com.tsolution.base.utils.CheckConnection;
+package com.tsolution.base.utils.checkConnection;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,6 @@ import android.provider.Settings;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.Objects;
 
 /**

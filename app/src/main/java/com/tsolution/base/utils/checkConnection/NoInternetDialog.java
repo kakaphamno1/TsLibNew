@@ -1,4 +1,4 @@
-package com.tsolution.base.utils.CheckConnection;
+package com.tsolution.base.utils.checkConnection;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -9,7 +9,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.os.Build;

@@ -24,8 +24,8 @@ import android.view.inputmethod.InputMethodManager;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
-import com.tsolution.base.utils.CheckConnection.NoInternetDialog;
-import com.tsolution.base.utils.locale.LocaleUtils;
+import com.tsolution.base.utils.GuestDialog;
+import com.tsolution.base.utils.checkConnection.NoInternetDialog;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -37,6 +37,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     private static AlertDialog.Builder alertDialogV2;
     protected V binding;
     private NoInternetDialog noInternetDialog;
+    private GuestDialog guestDialog;
 
     public BaseActivity() {
 
@@ -90,6 +91,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         try {
             viewModel = getVMClass().getDeclaredConstructor(Application.class).newInstance(getBaseActivity().getApplication());//ViewModelProviders.of(getActivity()).get(clazz);
             noInternetDialog = new NoInternetDialog.Builder(this).setCancelable(false).build();
+            guestDialog = new GuestDialog.Builder(this).setCancelable(true).build();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -192,6 +194,13 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     @Override
     public void onItemLongClick(View v, Object o) {
 
+    }
+
+    @Override
+    public void onShowDialogRegister() {
+        if (guestDialog != null && !guestDialog.isShowing()) {
+            guestDialog.show();
+        }
     }
 
     @Override

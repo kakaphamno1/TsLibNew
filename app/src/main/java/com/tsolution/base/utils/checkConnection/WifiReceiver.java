@@ -1,4 +1,4 @@
-package com.tsolution.base.utils.CheckConnection;
+package com.tsolution.base.utils.checkConnection;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

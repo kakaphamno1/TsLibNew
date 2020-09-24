@@ -24,6 +24,7 @@ import com.tsolution.base.listener.AdapterActionsListener;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
+import com.tsolution.base.utils.GuestDialog;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -31,6 +32,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment i
     protected RecyclerView recyclerView;
     protected V binding;
     protected BaseViewModel viewModel;
+    private GuestDialog guestDialog;
 
     public void unregisterEvent() {
         EventBus.getDefault().unregister(this);
@@ -48,6 +50,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment i
         try {
             super.onCreateView(inflater, container, savedInstanceState);
             binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
+            guestDialog = new GuestDialog.Builder(requireContext()).setCancelable(true).build();
             if (getVMClass() != null) {
                 init(savedInstanceState, getLayoutRes(), getVMClass(), getRecycleResId());
             }
@@ -138,6 +141,14 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment i
 
     @Override
     public void onItemLongClick(View v, Object o) {
+
+    }
+
+    @Override
+    public void onShowDialogRegister() {
+        if (guestDialog != null && !guestDialog.isShowing()) {
+            guestDialog.show();
+        }
 
     }
 }
