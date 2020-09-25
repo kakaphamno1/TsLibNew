@@ -3,12 +3,15 @@ package com.tsolution.base.utils;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tsolution.base.R;
 import com.tsolution.base.dto.EventDTO;
@@ -19,6 +22,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
+
+import retrofit2.http.POST;
 
 /**
  * Created by PhamBien.
@@ -36,6 +41,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
     private float dialogRadius;
     private boolean cancelable;
     private TextInputEditText edUserName, edPassword;
+    private MaterialButton buttonLogin;
 
     private GuestDialog(@NonNull Context context,
                         boolean cancelable) {
@@ -63,9 +69,32 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
     private void initView() {
         edUserName = findViewById(R.id.txtUserName);
         edPassword = findViewById(R.id.txtPassword);
+        buttonLogin =  findViewById(R.id.btnLogin);
+
+        TextWatcher loginTextWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String userName = edUserName.getText().toString().trim();
+                String password = edPassword.getText().toString().trim();
+                buttonLogin.setEnabled(!userName.isEmpty() && !password.isEmpty());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        edUserName.addTextChangedListener(loginTextWatcher);
+        edPassword.addTextChangedListener(loginTextWatcher);
     }
 
     private void initListener() {
+
         findViewById(R.id.btnLogin).setOnClickListener(this);
         findViewById(R.id.btnRegister).setOnClickListener(this);
         findViewById(R.id.close).setOnClickListener(this);
