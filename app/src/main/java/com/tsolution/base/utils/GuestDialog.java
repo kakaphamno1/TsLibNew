@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.tsolution.base.R;
 import com.tsolution.base.dto.EventDTO;
 import com.tsolution.base.dto.GuestActionDTO;
@@ -34,6 +35,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
 
     private float dialogRadius;
     private boolean cancelable;
+    private TextInputEditText edUserName, edPassword;
 
     private GuestDialog(@NonNull Context context,
                         boolean cancelable) {
@@ -53,8 +55,14 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.dialog_guest);
         initMainWindow();
         setCancelable(cancelable);
+        initView();
         initListener();
 
+    }
+
+    private void initView() {
+        edUserName = findViewById(R.id.txtUserName);
+        edPassword = findViewById(R.id.txtPassword);
     }
 
     private void initListener() {
@@ -74,6 +82,8 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
             // Process login
             EventBus.getDefault().post(GuestActionDTO.builder()
                     .isProcessLogin(true)
+                    .userName(edUserName.getText().toString())
+                    .password(edPassword.getText().toString())
                     .isProcessRegister(false)
                     .build());
             dismiss();
@@ -84,7 +94,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
                     .isProcessRegister(true)
                     .build());
             dismiss();
-        } else if (view.getId() == R.id.close){
+        } else if (view.getId() == R.id.close) {
             dismiss();
         }
     }
