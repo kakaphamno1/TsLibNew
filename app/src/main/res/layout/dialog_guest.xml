@@ -30,33 +30,45 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="160dp"
                     android:layout_alignParentTop="true"
-                    android:background="@color/primaryColor">
-
-                    <ImageView
-                        android:id="@+id/imgBanner"
-                        android:layout_width="70dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="6dp"
-                        android:src="@drawable/banner_app_new"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    android:background="#39C388">
 
                     <TextView
+                        android:id="@+id/login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@+id/imgBanner"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="6dp"
                         android:text="@string/login"
-                        android:textAllCaps="true"
+                        android:textColor="@color/white_medium"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/account"
+                        app:layout_constraintTop_toBottomOf="@+id/login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/mstore_account"
                         android:textColor="@color/white_medium"
                         android:textSize="18sp"
-                        android:textStyle="normal"
-                        app:layout_constraintBottom_toBottomOf="@id/imgBanner"
-                        app:layout_constraintLeft_toRightOf="@+id/imgBanner"
-                        app:layout_constraintTop_toTopOf="@+id/imgBanner" />
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/imageView" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/account"
+                        app:layout_constraintTop_toTopOf="@id/login"
+                        app:srcCompat="@drawable/ic_login"
+                        tools:ignore="VectorDrawableCompat" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <RelativeLayout
@@ -64,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="70dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/bg_login">

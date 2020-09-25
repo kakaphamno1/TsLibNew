@@ -18,4 +18,5 @@
     <string name="enter_the_account_and_password_you_registered">Nhập tài khoản và mật khẩu đã đăng ký</string>
     <string name="no_account_sign_up_now">Chưa có tài khoản, đăng ký ngay</string>
     <string name="login">Đăng nhập</string>
+    <string name="mstore_account">Tài khoản Mstore</string>
 </resources>
