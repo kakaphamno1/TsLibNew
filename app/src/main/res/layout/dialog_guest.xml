@@ -130,6 +130,7 @@
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
                         app:boxStrokeColor="#FFF"
+                        app:passwordToggleEnabled="true"
                         app:boxBackgroundColor="#FFF"
                         android:layout_width="match_parent"
                         android:layout_below="@+id/view"
