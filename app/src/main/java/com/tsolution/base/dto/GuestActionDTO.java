@@ -10,4 +10,5 @@ import lombok.Setter;
 public class GuestActionDTO {
     private boolean isProcessLogin;
     private boolean isProcessRegister;
+    private boolean isDismiss;
 }

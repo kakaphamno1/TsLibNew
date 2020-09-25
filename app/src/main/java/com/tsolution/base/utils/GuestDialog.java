@@ -60,6 +60,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
     private void initListener() {
         findViewById(R.id.btnLogin).setOnClickListener(this);
         findViewById(R.id.btnRegister).setOnClickListener(this);
+        findViewById(R.id.close).setOnClickListener(this);
     }
 
 
@@ -82,6 +83,8 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
                     .isProcessLogin(false)
                     .isProcessRegister(true)
                     .build());
+            dismiss();
+        } else if (view.getId() == R.id.close){
             dismiss();
         }
     }

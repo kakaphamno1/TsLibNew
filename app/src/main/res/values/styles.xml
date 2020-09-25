@@ -6,7 +6,19 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="StyleEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/hint_text_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxStrokeWidth">1px</item>
+        <item name="boxBackgroundColor">@color/background_edit_text</item>
+        <item name="android:radius">12dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxStrokeWidthFocused">1px</item>
+    </style>
     <style name="roundedButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:background">@drawable/button_pill</item>
         <item name="android:paddingLeft">@dimen/margin_small</item>

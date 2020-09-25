@@ -13,4 +13,9 @@
     <string name="mobile_data">Mobile data</string>
     <string name="airplane">Airplane mode</string>
     <string name="airplane_on">Airplane mode is on</string>
+    <string name="PHONE_NUMBER">Phone number</string>
+    <string name="password"> Password</string>
+    <string name="enter_the_account_and_password_you_registered">Enter the account and password you registered</string>
+    <string name="no_account_sign_up_now">No account, sign up now</string>
+    <string name="login">LOGIN</string>
 </resources>

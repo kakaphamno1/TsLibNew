@@ -13,4 +13,9 @@
     <string name="mobile_data">Dữ liệu di động</string>
     <string name="airplane">Chế độ máy bay</string>
     <string name="airplane_on">Bạn đang bật chế độ trên máy bay</string>
+    <string name="PHONE_NUMBER">Số điện thoại</string>
+    <string name="password"> Mật khẩu</string>
+    <string name="enter_the_account_and_password_you_registered">Nhập tài khoản và mật khẩu đã đăng ký</string>
+    <string name="no_account_sign_up_now">Chưa có tài khoản, đăng ký ngay</string>
+    <string name="login">Đăng nhập</string>
 </resources>
