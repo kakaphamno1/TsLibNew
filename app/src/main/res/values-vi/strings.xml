@@ -19,4 +19,5 @@
     <string name="no_account_sign_up_now">Chưa có tài khoản, đăng ký ngay</string>
     <string name="login">Đăng nhập</string>
     <string name="mstore_account">Tài khoản Mstore</string>
+    <string name="refresh">Refresh</string>
 </resources>

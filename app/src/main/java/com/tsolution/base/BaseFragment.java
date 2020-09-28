@@ -25,6 +25,7 @@ import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
 import com.tsolution.base.utils.GuestDialog;
+import com.tsolution.base.utils.TimeOutDialog;
 
 import org.greenrobot.eventbus.EventBus;
 

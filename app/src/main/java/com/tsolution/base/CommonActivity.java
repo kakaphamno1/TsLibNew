@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.tsolution.base.utils.AlertsUtils;
-
 public class CommonActivity extends BaseActivity {
 
 
@@ -98,12 +96,10 @@ public class CommonActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AlertsUtils.register(this);
     }
 
     @Override
     protected void onPause() {
-        AlertsUtils.unregister(this);
         super.onPause();
     }
 }

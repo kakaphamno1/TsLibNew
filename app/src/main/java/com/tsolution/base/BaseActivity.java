@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import androidx.databinding.DataBindingUtil;
@@ -25,6 +26,8 @@ import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
 import com.tsolution.base.utils.GuestDialog;
+import com.tsolution.base.utils.TimeOutDialog;
+import com.tsolution.base.utils.broadcast.TimeOutBroadcast;
 import com.tsolution.base.utils.checkConnection.NoInternetDialog;
 
 import java.lang.reflect.InvocationTargetException;
@@ -38,6 +41,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     protected V binding;
     private NoInternetDialog noInternetDialog;
     private GuestDialog guestDialog;
+    private TimeOutDialog timeOutDialog;
 
     public BaseActivity() {
 
@@ -92,6 +96,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
             viewModel = getVMClass().getDeclaredConstructor(Application.class).newInstance(getBaseActivity().getApplication());//ViewModelProviders.of(getActivity()).get(clazz);
             noInternetDialog = new NoInternetDialog.Builder(this).setCancelable(false).build();
             guestDialog = new GuestDialog.Builder(this).setCancelable(true).build();
+            timeOutDialog = new TimeOutDialog.Builder(this).setCancelable(false).build();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -203,6 +208,13 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         }
     }
 
+    public void sendTimeOutBroadCast() {
+        Intent intent = new Intent(TimeOutBroadcast.SHOW_TOKEN_DIALOG);
+        intent.setAction(TimeOutBroadcast.SHOW_TOKEN_DIALOG);
+        sendBroadcast(intent);
+    }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -211,6 +223,9 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         }
         if (noInternetDialog != null) {
             noInternetDialog.onDestroy();
+        }
+        if (timeOutDialog != null) {
+            timeOutDialog.onDestroy();
         }
     }
 

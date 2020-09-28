@@ -19,4 +19,5 @@
     <string name="no_account_sign_up_now">No account, sign up now</string>
     <string name="login">Login</string>
     <string name="mstore_account">Mstore account</string>
+    <string name="refresh">Refresh</string>
 </resources>

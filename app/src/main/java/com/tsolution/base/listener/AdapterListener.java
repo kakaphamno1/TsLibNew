@@ -10,4 +10,7 @@ public interface AdapterListener {
     default void onShowDialogRegister() {
 
     }
+    default void onShowDialogTimeOut() {
+
+    }
 }
