@@ -38,7 +38,6 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
     }
 
 
-    private float dialogRadius;
     private boolean cancelable;
     private TextInputEditText edUserName, edPassword;
     private MaterialButton buttonLogin;
@@ -47,10 +46,6 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
                         boolean cancelable) {
         super(context);
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        this.dialogRadius = dialogRadius == 0 ? RADIUS : dialogRadius;
-        if (dialogRadius == NO_RADIUS) {
-            this.dialogRadius = 0f;
-        }
         this.cancelable = cancelable;
     }
 
@@ -69,7 +64,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
     private void initView() {
         edUserName = findViewById(R.id.txtUserName);
         edPassword = findViewById(R.id.txtPassword);
-        buttonLogin =  findViewById(R.id.btnLogin);
+        buttonLogin = findViewById(R.id.btnLogin);
 
         TextWatcher loginTextWatcher = new TextWatcher() {
             @Override
@@ -97,6 +92,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
 
         findViewById(R.id.btnLogin).setOnClickListener(this);
         findViewById(R.id.btnRegister).setOnClickListener(this);
+        findViewById(R.id.btnActivate).setOnClickListener(this);
         findViewById(R.id.close).setOnClickListener(this);
     }
 
@@ -110,10 +106,11 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
         if (view.getId() == R.id.btnLogin) {
             // Process login
             EventBus.getDefault().post(GuestActionDTO.builder()
-                    .isProcessLogin(true)
                     .userName(edUserName.getText().toString())
                     .password(edPassword.getText().toString())
+                    .isProcessLogin(true)
                     .isProcessRegister(false)
+                    .isActiveAccount(false)
                     .build());
             dismiss();
         } else if (view.getId() == R.id.btnRegister) {
@@ -121,6 +118,16 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
             EventBus.getDefault().post(GuestActionDTO.builder()
                     .isProcessLogin(false)
                     .isProcessRegister(true)
+                    .isActiveAccount(false)
+                    .build());
+            dismiss();
+        }
+        if (view.getId() == R.id.btnActivate) {
+            // Process Register
+            EventBus.getDefault().post(GuestActionDTO.builder()
+                    .isProcessLogin(false)
+                    .isProcessRegister(false)
+                    .isActiveAccount(true)
                     .build());
             dismiss();
         } else if (view.getId() == R.id.close) {

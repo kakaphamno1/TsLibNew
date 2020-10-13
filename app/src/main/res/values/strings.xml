@@ -20,4 +20,6 @@
     <string name="login">Login</string>
     <string name="mstore_account">Mstore account</string>
     <string name="refresh">Refresh</string>
+    <string name="or">or</string>
+    <string name="active_account">Account active</string>
 </resources>

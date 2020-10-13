@@ -20,4 +20,6 @@
     <string name="login">Đăng nhập</string>
     <string name="mstore_account">Tài khoản Mstore</string>
     <string name="refresh">Refresh</string>
+    <string name="or">Or</string>
+    <string name="active_account">Account active</string>
 </resources>
