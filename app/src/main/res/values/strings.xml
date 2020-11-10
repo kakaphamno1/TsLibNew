@@ -22,4 +22,7 @@
     <string name="refresh">Refresh</string>
     <string name="or">or</string>
     <string name="active_account">Account active</string>
+    <string name="experience_now">Experience now</string>
+    <string name="sign_in_if_you_already_have_an_account_or_create_new">Sign in if you already have an account. \n Or create new</string>
+    <string name="sign_up_lib">Sign Up</string>
 </resources>
