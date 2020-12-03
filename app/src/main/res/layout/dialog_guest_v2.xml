@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
-        android:background="@color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_margin="12dp"
-            android:background="@drawable/dialog_rounded_bg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/dialog_rounded_bg">
 
             <ImageView
                 android:id="@+id/close"
@@ -62,10 +62,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <com.google.android.material.button.MaterialButton
-                android:backgroundTint="@color/colorWhite"
-                app:strokeColor="#289767"
-                app:strokeWidth="1dp"
-                app:cornerRadius="8dp"
                 android:id="@+id/btnLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -73,29 +69,48 @@
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/colorWhite"
                 android:text="@string/login"
                 android:textColor="#289767"
+                app:cornerRadius="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btnRegister"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:strokeColor="#289767"
+                app:strokeWidth="1dp"
                 tools:targetApi="lollipop" />
 
             <com.google.android.material.button.MaterialButton
-                app:cornerRadius="8dp"
-                tools:targetApi="lollipop"
-                android:textColor="@color/colorWhite"
-                android:backgroundTint="#289767"
                 android:id="@+id/btnRegister"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="14dp"
+                android:backgroundTint="#289767"
                 android:text="@string/sign_up_lib"
+                android:textColor="@color/colorWhite"
+                app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnLogin"
-                app:layout_constraintTop_toTopOf="@+id/btnLogin" />
+                app:layout_constraintTop_toTopOf="@+id/btnLogin"
+                tools:targetApi="lollipop" />
 
+            <TextView
+                android:id="@+id/btnActivate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/active_account"
+                android:textColor="@color/primaryColor"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 

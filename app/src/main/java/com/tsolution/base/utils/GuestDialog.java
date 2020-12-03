@@ -94,7 +94,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
 
         findViewById(R.id.btnLogin).setOnClickListener(this);
         findViewById(R.id.btnRegister).setOnClickListener(this);
-        //findViewById(R.id.btnActivate).setOnClickListener(this);
+        findViewById(R.id.btnActivate).setOnClickListener(this);
         findViewById(R.id.close).setOnClickListener(this);
     }
 
@@ -127,15 +127,15 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
         } else if (view.getId() == R.id.close) {
             dismiss();
         }
-//        if (view.getId() == R.id.btnActivate) {
-//            // Process Register
-//            EventBus.getDefault().post(GuestActionDTO.builder()
-//                    .isProcessLogin(false)
-//                    .isProcessRegister(false)
-//                    .isActiveAccount(true)
-//                    .build());
-//            dismiss();
-
+        if (view.getId() == R.id.btnActivate) {
+            // Process Register
+            EventBus.getDefault().post(GuestActionDTO.builder()
+                    .isProcessLogin(false)
+                    .isProcessRegister(false)
+                    .isActiveAccount(true)
+                    .build());
+            dismiss();
+        }
     }
 
     @Override
