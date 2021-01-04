@@ -10,6 +10,8 @@ import android.content.pm.ActivityInfo;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.IdRes;
@@ -22,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate;
+import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
@@ -42,6 +46,8 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     private NoInternetDialog noInternetDialog;
     private GuestDialog guestDialog;
     private TimeOutDialog timeOutDialog;
+//    private LocalizationActivityDelegate localizationActivityDelegate;
+
 
     public BaseActivity() {
 
@@ -82,9 +88,38 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         return this;
     }
 
+//    public LocalizationActivityDelegate getLanguageDelegate() {
+//        if (localizationActivityDelegate == null) {
+//            localizationActivityDelegate = new LocalizationActivityDelegate(this);
+//        }
+//        return localizationActivityDelegate;
+//    }
+
+//    public void setLanguage(String language) {
+//        getLanguageDelegate().setLanguage(this, language);
+//    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
+         super.attachBaseContext(newBase);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//            applyOverrideConfiguration(getLanguageDelegate().updateConfigurationLocale(newBase));
+//            super.attachBaseContext(newBase);
+//        } else {
+//            super.attachBaseContext(getLanguageDelegate().attachBaseContext(newBase));
+//        }
+    }
+
+//    @Override
+//    public Resources getResources() {
+//        return getLanguageDelegate().getResources(super.getResources());
+//
+//    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //getLanguageDelegate().onResume(this);
     }
 
     @Override
@@ -117,6 +152,8 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
             AlertModel a = (AlertModel) alert;
             showAlertDialog(a.msg, a.funcPositive);
         });
+       // getLanguageDelegate().onCreate();
+
     }
 
 
@@ -229,8 +266,5 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
+
 }
