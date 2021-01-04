@@ -42,7 +42,7 @@ public class NoInternetUtils {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         assert wifiInfo != null;
-        return  wifiInfo.isConnected();
+        return wifiInfo.isConnected();
     }
 
     public static boolean isConnectedToMobileNetwork(Context context) {
@@ -57,14 +57,15 @@ public class NoInternetUtils {
     }
 
     static void turnOnWifi(Context context) {
-        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-        if (wifiManager == null || isConnectedToWifi(context)) {
-            context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-            return;
-        }
-
-        wifiManager.setWifiEnabled(true);
+//        WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+//
+//        if (wifiManager == null || isConnectedToWifi(context)) {
+//            context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//            return;
+//        }
+//
+//        wifiManager.setWifiEnabled(true);
+        context.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
     }
 
     static boolean isAirplaneModeOn(Context context) {
