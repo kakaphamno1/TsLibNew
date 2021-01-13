@@ -25,4 +25,5 @@
     <string name="experience_now">Trải nghiệm ngay</string>
     <string name="sign_in_if_you_already_have_an_account_or_create_new">Đăng nhập nếu bạn đã có tài khoản.\n Hoặc tạo tài khoản mới</string>
     <string name="sign_up_lib">Đăng ký</string>
+    <string name="active_code_l2">Nhập mã giới thiệu</string>
 </resources>
