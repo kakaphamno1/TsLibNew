@@ -24,8 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate;
-import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.listener.DefaultFunctionActivity;
 import com.tsolution.base.listener.ViewActionsListener;
@@ -36,7 +35,7 @@ import com.tsolution.base.utils.checkConnection.NoInternetDialog;
 
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatActivity implements ViewActionsListener, DefaultFunctionActivity, AdapterListener {
+public abstract class BaseActivity<V extends ViewDataBinding> extends LocalizationActivity implements ViewActionsListener, DefaultFunctionActivity, AdapterListener {
     protected ProgressDialog.Builder pdb;
     protected static ProgressDialog pd;
     private static AlertDialog.Builder alertDialog;
@@ -46,7 +45,6 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
     private NoInternetDialog noInternetDialog;
     private GuestDialog guestDialog;
     private TimeOutDialog timeOutDialog;
-//    private LocalizationActivityDelegate localizationActivityDelegate;
 
 
     public BaseActivity() {
@@ -88,39 +86,6 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
         return this;
     }
 
-//    public LocalizationActivityDelegate getLanguageDelegate() {
-//        if (localizationActivityDelegate == null) {
-//            localizationActivityDelegate = new LocalizationActivityDelegate(this);
-//        }
-//        return localizationActivityDelegate;
-//    }
-
-//    public void setLanguage(String language) {
-//        getLanguageDelegate().setLanguage(this, language);
-//    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-         super.attachBaseContext(newBase);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-//            applyOverrideConfiguration(getLanguageDelegate().updateConfigurationLocale(newBase));
-//            super.attachBaseContext(newBase);
-//        } else {
-//            super.attachBaseContext(getLanguageDelegate().attachBaseContext(newBase));
-//        }
-    }
-
-//    @Override
-//    public Resources getResources() {
-//        return getLanguageDelegate().getResources(super.getResources());
-//
-//    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //getLanguageDelegate().onResume(this);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
