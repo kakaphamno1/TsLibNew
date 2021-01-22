@@ -13,6 +13,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.tsolution.base.R;
 import com.tsolution.base.dto.EventDTO;
+import com.tsolution.base.dto.GuestActionDTO;
 import com.tsolution.base.listener.AdapterListener;
 import com.tsolution.base.utils.broadcast.TimeOutBroadcast;
 import com.workable.errorhandler.ErrorHandler;
@@ -77,10 +78,12 @@ public class TimeOutDialog extends Dialog implements View.OnClickListener, Adapt
 
     private void initListener() {
         findViewById(R.id.btnRefresh).setOnClickListener(this);
+        findViewById(R.id.btnLogout).setOnClickListener(this);
     }
 
 
     private void initMainWindow() {
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         Objects.requireNonNull(getWindow()).setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
@@ -91,6 +94,15 @@ public class TimeOutDialog extends Dialog implements View.OnClickListener, Adapt
             EventBus.getDefault().post(EventDTO.builder()
                     .code(REFRESH_TOKEN_CODE)
                     .message("REFRESH_TOKEN_CODE").build());
+        }else if (view.getId() == R.id.btnLogout){
+            EventBus.getDefault().post(GuestActionDTO.builder()
+//                    .userName(edUserName.getText().toString())
+//                    .password(edPassword.getText().toString())
+                    .isProcessLogin(true)
+                    .isProcessRegister(false)
+                    .isActiveAccount(false)
+                    .build());
+            dismiss();
         }
     }
 
