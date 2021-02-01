@@ -16,106 +16,80 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:background="@color/transparent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_alignParentTop="true"
-            android:background="#39C388">
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_request_time_out"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="6dp"
-                android:text="@string/login"
-                android:textColor="@color/white_medium"
-                android:textSize="16sp"
-                android:textStyle="normal"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/notice"
+                android:textColor="@color/title_text_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/account"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtMsg"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/mstore_account"
-                android:textColor="@color/white_medium"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/login" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="#3A3E41"
+                android:textSize="16sp"
+                android:text="@string/for_your_safety_reason_you_will_be_signed_out_now"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imageView"
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:id="@+id/btnRefresh"
+                android:layout_height="52dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="14dp"
+                android:backgroundTint="#289767"
+                android:text="@string/stay_signed_in"
+                android:textColor="@color/colorWhite"
+                app:cornerRadius="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtMsg"
+                tools:targetApi="lollipop" />
+
+            <TextView
+                android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/account"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/sign_out_now"
+                android:textColor="#3A8CFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/login"
-                app:srcCompat="@drawable/ic_login"
-                tools:ignore="VectorDrawableCompat" />
+                app:layout_constraintTop_toBottomOf="@+id/btnRefresh" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <RelativeLayout
-            android:id="@+id/topView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_login">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_register_login"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:paddingStart="10dp"
-                android:paddingEnd="1dp"
-                android:text="@string/token_timeout"
-                android:textColor="@color/black"
-                android:textStyle="normal|bold" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lyPassword"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:boxBackgroundColor="#FFF"
-                app:boxStrokeColor="#FFF"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:hintEnabled="true"
-                app:passwordToggleEnabled="true" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/lyPassword"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_footer_suggest">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnRefresh"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:text="@string/refresh"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </RelativeLayout>
     </RelativeLayout>
+
+
 </layout>
 

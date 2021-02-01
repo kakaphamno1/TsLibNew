@@ -26,4 +26,8 @@
     <string name="sign_in_if_you_already_have_an_account_or_create_new">Đăng nhập nếu bạn đã có tài khoản.\n Hoặc tạo tài khoản mới</string>
     <string name="sign_up_lib">Đăng ký</string>
     <string name="active_code_l2">Nhập mã giới thiệu</string>
+    <string name="notice">Notice</string>
+    <string name="stay_signed_in">Stay signed in</string>
+    <string name="sign_out_now">Sign out now</string>
+    <string name="for_your_safety_reason_you_will_be_signed_out_now">For your safety reason, you will be signed out now</string>
 </resources>

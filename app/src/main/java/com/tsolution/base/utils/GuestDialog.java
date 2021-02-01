@@ -126,8 +126,7 @@ public class GuestDialog extends Dialog implements View.OnClickListener {
             dismiss();
         } else if (view.getId() == R.id.close) {
             dismiss();
-        }
-        if (view.getId() == R.id.btnActivate) {
+        }else if (view.getId() == R.id.btnActivate) {
             // Process Register
             EventBus.getDefault().post(GuestActionDTO.builder()
                     .isProcessLogin(false)
