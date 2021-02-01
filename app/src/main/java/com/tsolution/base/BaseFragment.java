@@ -107,7 +107,7 @@ public abstract class BaseFragment<V extends ViewDataBinding> extends Fragment i
     }
 
     @Override
-    public void processFromVM(String action, View view, BaseViewModel viewModel, Throwable t) {
+    public void processFromVM(String action, Object... params) {
         if ("hideKeyBoard".equals(action)) {
             hideKeyBoard();
         }

@@ -41,18 +41,7 @@ public interface DefaultFunctionActivity extends BaseListener {
     }
 
 
-    default void processFromVM(String action, View view, BaseViewModel viewModel, Throwable t) {
-        BaseActivity activity = getBaseActivity();
-        if (t != null) {
-            String msg;
-            if (t instanceof AppException)
-                msg = ((AppException) t).message;
-            else {
-                t.printStackTrace();
-                msg = t.getMessage();
-            }
-            Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
-        }
+    default void processFromVM(String action, Object... params){
     }
 
     default void showProcessing(String msg) {

@@ -172,7 +172,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends Localizati
     }
 
     @Override
-    public void processFromVM(String action, View view, BaseViewModel viewModel, Throwable t) {
+    public void processFromVM(String action, Object... params) {
         if ("hideKeyBoard".equals(action)) {
             hideKeyBoard();
         }

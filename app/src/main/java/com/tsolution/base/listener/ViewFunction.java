@@ -1,25 +1,22 @@
 package com.tsolution.base.listener;
 
-import android.view.View;
-
-import com.tsolution.base.BaseViewModel;
-import com.tsolution.base.exceptionHandle.AppException;
 import com.workable.errorhandler.ErrorHandler;
 
 public interface ViewFunction extends BaseListener {
-    void process(String action, View view, BaseViewModel viewModel, Throwable t);
+    void process(String action, Object... params);
 
-    default void action(String action, View view, BaseViewModel viewModel, Throwable t) throws AppException {
+
+    default void action(String action) {
         try {
-            process(action, view, viewModel, t);
+            process(action, null);
         } catch (Exception e) {
             ErrorHandler.create().handle(e);
         }
     }
 
-    default void action(String action, BaseViewModel viewModel) {
+    default void actionWithParam(String action, Object... params) {
         try {
-            process(action, null, viewModel, null);
+            process(action, params);
         } catch (Exception e) {
             ErrorHandler.create().handle(e);
         }
