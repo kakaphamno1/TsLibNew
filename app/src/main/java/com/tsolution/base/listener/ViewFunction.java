@@ -8,7 +8,7 @@ public interface ViewFunction extends BaseListener {
 
     default void action(String action) {
         try {
-            process(action, null);
+            process(action, (Object) null);
         } catch (Exception e) {
             ErrorHandler.create().handle(e);
         }
